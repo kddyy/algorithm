@@ -1,16 +1,18 @@
 import sys
-heap = []
-N = int(sys.stdin.readline())
-for i in range (N):
-    X = int(sys.stdin.readline())
-    if X == 0:
-        if not heap:
-            print(0)
-        else:
-            print(max(heap))
-            heap = [heap.pop(heap.index(max(heap)))]
+import heapq
 
-    else: 
-        heap.append(X)
+N = int(sys.stdin.readline())
+heap = []
+
+for i in range(N):
+    input = int(sys.stdin.readline())
+    if input == 0:
+        try:
+            print(-1 * heapq.heappop(heap))
+        except:
+            print(0)
+    else:
+        heapq.heappush(heap,-input) 
+
 
 
